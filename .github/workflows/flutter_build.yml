@@ -1,9 +1,6 @@
 name: Build Flutter APK
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -18,16 +15,18 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.0' # Change si besoin
+          flutter-version: '3.13.0'  # ou laisse vide pour latest stable
 
       - name: Install dependencies
+        working-directory: byf_flutter_complete
         run: flutter pub get
 
       - name: Build APK
+        working-directory: byf_flutter_complete
         run: flutter build apk --release
 
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
-          name: build-your-future-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: byf-release-apk
+          path: byf_flutter_complete/build/app/outputs/flutter-apk/app-release.apk
