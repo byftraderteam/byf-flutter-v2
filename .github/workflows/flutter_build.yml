@@ -10,23 +10,22 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.0'  # ou laisse vide pour latest stable
+          flutter-version: '3.19.6' # (ou la version exacte de ton projet)
+          channel: 'stable'
 
       - name: Install dependencies
-        working-directory: byf_flutter_complete
         run: flutter pub get
 
       - name: Build APK
-        working-directory: byf_flutter_complete
         run: flutter build apk --release
 
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: byf-release-apk
-          path: byf_flutter_complete/build/app/outputs/flutter-apk/app-release.apk
+          name: build-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
