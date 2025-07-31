@@ -18,7 +18,7 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
-        working-directory: byf_flutter_complete
+        working-directory: .
 
       - name: Build APK
         run: flutter build apk --release
