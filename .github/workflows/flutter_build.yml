@@ -25,7 +25,7 @@ jobs:
         working-directory: byf_flutter_complete
 
       - name: Upload APK artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: app-release.apk
           path: byf_flutter_complete/build/app/outputs/flutter-apk/app-release.apk
