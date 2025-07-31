@@ -22,7 +22,7 @@ jobs:
 
       - name: Build APK
         run: flutter build apk --release
-        working-directory: byf_flutter_complete
+        working-directory: .
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
